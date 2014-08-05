@@ -1,0 +1,28 @@
+:host {
+  position: relative;
+  display: inline-block;
+}
+
+#selectedItem {
+  margin-left: 12px;
+  max-width: inherit;
+}
+
+#selectedItem::shadow #label {
+  overflow: hidden;
+  /* FIXME not working for some reason */
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+#arrow {
+  margin: 0 12px;
+}
+
+#menu {
+  position: absolute;
+  left: 0;
+  margin: 0;
+  padding: 0 12px;
+  overflow: scroll;
+}

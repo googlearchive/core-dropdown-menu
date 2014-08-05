@@ -1,0 +1,72 @@
+<!--
+Copyright (c) 2014 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+<!--
+@group Polymer Core Elements
+
+@element core-dropdown
+@status beta
+@homepage github.io
+-->
+<link href="../polymer/polymer.html" rel="import">
+<link href="../core-icon/core-icon.html" rel="import">
+<link href="../core-icons/core-icons.html" rel="import">
+<link href="../core-item/core-item.html" rel="import">
+<link href="../core-menu/core-menu.html" rel="import">
+<link href="../core-overlay/core-overlay.html" rel="import">
+
+<polymer-element name="core-dropdown">
+<template>
+
+  <link href="core-dropdown.css" rel="stylesheet">
+
+  <div layout horizontal center on-tap="{{toggle}}">
+    <core-item flex id="selectedItem" src="{{selectedItem.src}}" icon="{{selectedItem.icon}}" label="{{selectedItem.label}}"></core-item>
+    <core-icon id="arrow" icon="{{opened ? 'arrow-drop-up' : 'arrow-drop-down'}}"></core-icon>
+  </div>
+
+  <core-overlay target="{{$.menu}}" opened="{{opened}}" on-core-overlay-open="{{openAction}}"></core-overlay>
+
+  <core-menu id="menu" selected="{{selected}}" selectedItem="{{selectedItem}}" selectedClass="{{selectedClass}}" valueattr="{{valueattr}}" multi="{{multi}}" on-core-select="{{selectAction}}">
+    <content select="*"></content>
+  </core-menu>
+
+</template>
+<script>
+
+  Polymer({
+
+    publish: {
+
+      opened: false,
+
+      selected: 0,
+
+      selectedItem: null
+
+    },
+
+    toggle: function() {
+      this.opened = !this.opened;
+    },
+
+    openAction: function(e) {
+      if (e.detail) {
+        var rect = this.$.selectedItem.getBoundingClientRect();
+        this.$.menu.style.top = rect.height + 'px';
+        this.$.menu.style.maxHeight = (window.innerHeight - rect.height - rect.top - 12) + 'px';
+      }
+    },
+
+    selectAction: function() {
+      this.opened = false;
+    }
+  });
+
+</script>
+</polymer-element>
