@@ -22,6 +22,10 @@ license that can be found in the LICENSE file.
       background-color: #eee;
     }
 
+    body /deep/ core-dropdown.narrow {
+      max-width: 100px;
+    }
+
     body /deep/ core-menu {
       background-color: #eee;
       border: 1px solid #ccc;
@@ -34,6 +38,15 @@ license that can be found in the LICENSE file.
   <polymer-element name="dropdown-demo">
   <template>
     <core-dropdown>
+      <template repeat="{{countries}}">
+        <core-item label="{{name}}"></core-item>
+      </template>
+    </core-dropdown>
+
+    <br><br>
+
+    narrow dropdown:
+    <core-dropdown class="narrow">
       <template repeat="{{countries}}">
         <core-item label="{{name}}"></core-item>
       </template>
