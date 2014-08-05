@@ -4,12 +4,12 @@
   background-color: #fff;
 }
 
-#selectedItem {
+#control core-item {
   margin-left: 12px;
   max-width: inherit;
 }
 
-#selectedItem::shadow #label {
+#control core-item::shadow #label {
   overflow: hidden;
   /* FIXME not working for some reason */
   white-space: nowrap;

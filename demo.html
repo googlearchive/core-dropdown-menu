@@ -20,8 +20,12 @@ license that can be found in the LICENSE file.
   <style>
     dropdown-demo {
       display: block;
-      margin: 50% 0;
     }
+
+    dropdown-demo::shadow > section {
+      padding: 12px;
+    }
+
     body /deep/ core-dropdown {
       background-color: #eee;
     }
@@ -30,7 +34,7 @@ license that can be found in the LICENSE file.
       max-width: 100px;
     }
 
-    body /deep/ core-menu {
+    body /deep/ core-dropdown::shadow #menu {
       background-color: #eee;
       border: 1px solid #ccc;
     }
@@ -41,39 +45,45 @@ license that can be found in the LICENSE file.
 
   <polymer-element name="dropdown-demo">
   <template>
-    <section layout horizontal>
+    <section layout vertical fit>
+      <section layout horizontal>
 
-      <core-dropdown>
-        <template repeat="{{countries}}">
-          <core-item label="{{name}}"></core-item>
-        </template>
-      </core-dropdown>
-
-      <div style="margin:0 12px;">
-        narrow:
-        <core-dropdown class="narrow">
+        <core-dropdown>
           <template repeat="{{countries}}">
             <core-item label="{{name}}"></core-item>
           </template>
         </core-dropdown>
-      </div>
 
-      <div style="margin:0 12px;">
-        drop-up:
-        <core-dropdown valign="top">
+        <div style="margin:0 12px;">
+          narrow:
+          <core-dropdown class="narrow">
+            <template repeat="{{countries}}">
+              <core-item label="{{name}}"></core-item>
+            </template>
+          </core-dropdown>
+        </div>
+
+        <div flex></div>
+
+        <core-dropdown halign="right">
           <template repeat="{{countries}}">
             <core-item label="{{name}}"></core-item>
           </template>
         </core-dropdown>
-      </div>
+
+      </section>
 
       <div flex></div>
 
-      <core-dropdown halign="right">
-        <template repeat="{{countries}}">
-          <core-item label="{{name}}"></core-item>
-        </template>
-      </core-dropdown>
+      <section>
+        drop-up:
+        <core-dropdown valign="top" valueattr="label" selected="Donut">
+          <core-item label="Croissant"></core-item>
+          <core-item label="Donut"></core-item>
+          <core-item label="Financier"></core-item>
+          <core-item label="Madeleine"></core-item>
+        </core-dropdown>
+      </section>
 
     </section>
 
@@ -329,7 +339,7 @@ license that can be found in the LICENSE file.
   </script>
   </polymer-element>
 
-  <dropdown-demo></dropdown-demo>
+  <dropdown-demo fit></dropdown-demo>
 
 </body>
 </html>
