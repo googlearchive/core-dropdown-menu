@@ -18,6 +18,10 @@ license that can be found in the LICENSE file.
   <link href="core-dropdown.html" rel="import">
 
   <style>
+    dropdown-demo {
+      display: block;
+      margin: 50% 0;
+    }
     body /deep/ core-dropdown {
       background-color: #eee;
     }
@@ -37,33 +41,42 @@ license that can be found in the LICENSE file.
 
   <polymer-element name="dropdown-demo">
   <template>
-    <core-dropdown>
-      <template repeat="{{countries}}">
-        <core-item label="{{name}}"></core-item>
-      </template>
-    </core-dropdown>
-
-    <br><br>
-
     <section layout horizontal>
-      <div flex></div>
-      <div>
-        <core-dropdown halign="right">
+
+      <core-dropdown>
+        <template repeat="{{countries}}">
+          <core-item label="{{name}}"></core-item>
+        </template>
+      </core-dropdown>
+
+      <div style="margin:0 12px;">
+        narrow:
+        <core-dropdown class="narrow">
           <template repeat="{{countries}}">
             <core-item label="{{name}}"></core-item>
           </template>
         </core-dropdown>
       </div>
+
+      <div style="margin:0 12px;">
+        drop-up:
+        <core-dropdown valign="top">
+          <template repeat="{{countries}}">
+            <core-item label="{{name}}"></core-item>
+          </template>
+        </core-dropdown>
+      </div>
+
+      <div flex></div>
+
+      <core-dropdown halign="right">
+        <template repeat="{{countries}}">
+          <core-item label="{{name}}"></core-item>
+        </template>
+      </core-dropdown>
+
     </section>
 
-    <br><br>
-
-    narrow dropdown:
-    <core-dropdown class="narrow">
-      <template repeat="{{countries}}">
-        <core-item label="{{name}}"></core-item>
-      </template>
-    </core-dropdown>
   </template>
   <script>
     Polymer('dropdown-demo', {
@@ -73,7 +86,7 @@ license that can be found in the LICENSE file.
         {name: 'Albania', code: 'AL'}, 
         {name: 'Algeria', code: 'DZ'}, 
         {name: 'American Samoa', code: 'AS'}, 
-        {name: 'AndorrA', code: 'AD'}, 
+        {name: 'Andorra', code: 'AD'}, 
         {name: 'Angola', code: 'AO'}, 
         {name: 'Anguilla', code: 'AI'}, 
         {name: 'Antarctica', code: 'AQ'}, 

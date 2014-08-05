@@ -54,8 +54,18 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
        * ["left", "right"].
        * @attribute halign
        * @type string
+       * @default "left"
        */
-      halign: {value: 'left', reflect: true}
+      halign: {value: 'left', reflect: true},
+
+      /**
+       * Vertically align the dropdown menu with the button. Accepted values are
+       * ["top", "bottom"].
+       * @attribute halign
+       * @type string
+       * @default "bottom"
+       */
+      valign: {value: 'bottom', reflect: true}
 
     },
 
@@ -66,8 +76,16 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     openAction: function(e) {
       if (e.detail) {
         var rect = this.$.selectedItem.getBoundingClientRect();
-        this.$.menu.style.top = rect.height + 'px';
-        this.$.menu.style.maxHeight = (window.innerHeight - rect.height - rect.top - 12) + 'px';
+        if (this.valign === 'top') {
+          this.$.menu.style.top = 'auto';
+          this.$.menu.style.bottom = rect.height + 'px';
+          this.$.menu.style.maxHeight = (window.innerHeight - (window.innerHeight - rect.top) - 12) + 'px';
+          console.log(window.innerHeight, window.scrollY, rect.top, rect.height, this.$.menu.style.maxHeight);
+        } else {
+          this.$.menu.style.top = rect.height + 'px';
+          this.$.menu.style.bottom = 'auto';
+          this.$.menu.style.maxHeight = (window.innerHeight - rect.height - rect.top - 12) + 'px';
+        }
       }
     },
 

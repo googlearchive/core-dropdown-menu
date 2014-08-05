@@ -1,6 +1,7 @@
 :host {
   position: relative;
   display: inline-block;
+  background-color: #fff;
 }
 
 #selectedItem {
@@ -25,6 +26,7 @@
   margin: 0;
   padding: 0 12px;
   overflow: scroll;
+  background-color: #fff;
 }
 
 :host([halign="right"]) #menu {
