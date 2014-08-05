@@ -26,3 +26,8 @@
   padding: 0 12px;
   overflow: scroll;
 }
+
+:host([halign="right"]) #menu {
+  left: auto;
+  right: 0;
+}

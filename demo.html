@@ -45,6 +45,19 @@ license that can be found in the LICENSE file.
 
     <br><br>
 
+    <section layout horizontal>
+      <div flex></div>
+      <div>
+        <core-dropdown halign="right">
+          <template repeat="{{countries}}">
+            <core-item label="{{name}}"></core-item>
+          </template>
+        </core-dropdown>
+      </div>
+    </section>
+
+    <br><br>
+
     narrow dropdown:
     <core-dropdown class="narrow">
       <template repeat="{{countries}}">
