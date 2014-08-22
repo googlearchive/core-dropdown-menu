@@ -63,7 +63,7 @@ contains the selection state.
   <link href="core-dropdown.css" rel="stylesheet">
 
   <div id="control" layout horizontal center on-tap="{{toggle}}">
-    <core-item flex src="{{selectedItem.src}}" icon="{{selectedItem.icon}}" label="{{selectedItem ? selectedItem.label : label}}"></core-item>
+    <core-item flex src="{{selectedItem.src}}" icon="{{selectedItem.icon}}" label="{{selectedItem ? (selectedItem.label || selected) : label}}"></core-item>
     <core-icon id="arrow" icon="{{opened ? 'arrow-drop-up' : 'arrow-drop-down'}}"></core-icon>
   </div>
 
