@@ -9,34 +9,34 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 <!--
 
-`core-dropdown` is a control where the user can choose from an array of options in a drop-down
+`core-dropdown-menu` is a control where the user can choose from an array of options in a drop-down
 menu. The currently selected option is displayed in the control.
 
 Example:
 
-    <core-dropdown selected="Financier" valueattr="label">
-        <core-item label="Croissant"></core-item>
-        <core-item label="Donut"></core-item>
-        <core-item label="Financier"></core-item>
-        <core-item label="Madeleine"></core-item>
-    </core-dropdown>
+    <core-dropdown-menu selected="Financier" valueattr="label">
+      <core-item label="Croissant"></core-item>
+      <core-item label="Donut"></core-item>
+      <core-item label="Financier"></core-item>
+      <core-item label="Madeleine"></core-item>
+    </core-dropdown-menu>
 
 This example renders a drop-down menu with 4 options, with the option `Financier` pre-selected.
 
 Theming
 -------
 
-Style the drop-down menu with the `core-dropdown::shadow #menu` selector.
+Style the drop-down menu with the `core-dropdown-menu::shadow #dropdown` selector.
 
 Example:
 
-    core-dropdown::shadow #menu {
+    core-dropdown-menu::shadow #dropdown {
         background-color: #eee;
         border: 1px solid #ccc;
     }
 
 @group Polymer Core Elements
-@element core-dropdown
+@element core-dropdown-menu
 @status beta
 @homepage github.io
 -->
@@ -55,21 +55,24 @@ contains the selection state.
 <link href="../core-icon/core-icon.html" rel="import">
 <link href="../core-icons/core-icons.html" rel="import">
 <link href="../core-item/core-item.html" rel="import">
-<link href="../core-popup-menu/core-popup-menu.html" rel="import">
+<link href="../core-menu/core-menu.html" rel="import">
+<link href="../core-dropdown/core-dropdown.html" rel="import">
 
-<polymer-element name="core-dropdown">
+<polymer-element name="core-dropdown-menu">
 <template>
 
-  <link href="core-dropdown.css" rel="stylesheet">
+  <link href="core-dropdown-menu.css" rel="stylesheet">
 
   <div id="control" layout horizontal center on-tap="{{toggle}}">
     <core-item flex src="{{selectedItem.src}}" icon="{{selectedItem.icon}}" label="{{selectedItem ? (selectedItem.label || selected) : label}}"></core-item>
     <core-icon id="arrow" icon="{{opened ? 'arrow-drop-up' : 'arrow-drop-down'}}"></core-icon>
   </div>
 
-  <core-popup-menu id="menu" relatedTarget="{{$.control}}" opened="{{opened}}" selected="{{selected}}" valueattr="{{valueattr}}" selectedItem="{{selectedItem}}" halign="{{halign}}" valign="{{valign}}">
-    <content></content>
-  </core-popup-menu>
+  <core-dropdown id="dropdown" relatedTarget="{{$.control}}" opened="{{opened}}" halign="{{halign}}" valign="{{valign}}" margin="{{margin}}">
+    <core-menu selected="{{selected}}" valueattr="{{valueattr}}" selectedItem="{{selectedItem}}" on-core-select="{{selectAction}}">
+      <content></content>
+    </core-menu>
+  </core-dropdown>
 
 </template>
 <script>
@@ -156,20 +159,28 @@ contains the selection state.
 
       /**
        * Horizontally align the overlay with the control.
+       *
        * @attribute halign
-       * @type "left"|"right"
+       * @type "left" | "right"
        * @default "left"
        */
-      halign: {value: 'left', reflect: true},
+      halign: 'left',
 
       /**
        * Vertically align the dropdown menu with the control.
+       *
        * @attribute valign
-       * @type "top"|"bottom"
+       * @type "top" | "bottom"
        * @default "bottom"
        */
-      valign: {value: 'bottom', reflect: true}
+      valign: 'top',
 
+      margin: 12
+
+    },
+
+    selectAction: function() {
+      this.opened = false;
     },
 
     toggle: function() {

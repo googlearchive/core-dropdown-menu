@@ -30,6 +30,6 @@
   margin: 0 12px;
 }
 
-#menu {
-  padding: 0 12px;
+#dropdown {
+  min-width: 100%;
 }
