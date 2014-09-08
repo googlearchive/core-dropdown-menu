@@ -1,5 +1,5 @@
 {
-    "name": "core-dropdown",
+    "name": "core-dropdown-menu",
     "private": false,
     "dependencies": {
         "polymer": "Polymer/polymer#master",

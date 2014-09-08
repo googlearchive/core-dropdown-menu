@@ -15,10 +15,10 @@ menu. The currently selected option is displayed in the control.
 Example:
 
     <core-dropdown-menu selected="Financier" valueattr="label">
-      <core-item label="Croissant"></core-item>
-      <core-item label="Donut"></core-item>
-      <core-item label="Financier"></core-item>
-      <core-item label="Madeleine"></core-item>
+        <core-item label="Croissant"></core-item>
+        <core-item label="Donut"></core-item>
+        <core-item label="Financier"></core-item>
+        <core-item label="Madeleine"></core-item>
     </core-dropdown-menu>
 
 This example renders a drop-down menu with 4 options, with the option `Financier` pre-selected.
@@ -31,9 +31,13 @@ Style the drop-down menu with the `core-dropdown-menu::shadow #dropdown` selecto
 Example:
 
     core-dropdown-menu::shadow #dropdown {
-        background-color: #eee;
         border: 1px solid #ccc;
     }
+
+The `#dropdown` element's background must be transparent for the included transition to work.
+Style the background of the drop-down menu with `CoreStyle.g.paperMenuButton.background` instead:
+
+    CoreStyle.g.paperMenuButton.background = 'red';
 
 @group Polymer Core Elements
 @element core-dropdown-menu
