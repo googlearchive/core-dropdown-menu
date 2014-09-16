@@ -32,12 +32,14 @@ Example:
 
     core-dropdown-menu::shadow #dropdown {
         border: 1px solid #ccc;
+        max-height: 12px;
     }
 
-The `#dropdown` element's background must be transparent for the included transition to work.
-Style the background of the drop-down menu with `CoreStyle.g.paperMenuButton.background` instead:
+To modify the drop-down's margins, use the same selector. The default margin is 12px.
 
-    CoreStyle.g.paperMenuButton.background = 'red';
+    core-dropdown-menu::shadow #dropdown {
+        margin: 24px;
+    }
 
 @group Polymer Core Elements
 @element core-dropdown-menu
@@ -72,7 +74,7 @@ contains the selection state.
     <core-icon id="arrow" icon="{{opened ? 'arrow-drop-up' : 'arrow-drop-down'}}"></core-icon>
   </div>
 
-  <core-dropdown id="dropdown" relatedTarget="{{$.control}}" opened="{{opened}}" halign="{{halign}}" valign="{{valign}}" margin="{{margin}}">
+  <core-dropdown id="dropdown" relatedTarget="{{$.control}}" opened="{{opened}}" halign="{{halign}}" valign="{{valign}}">
     <core-menu selected="{{selected}}" valueattr="{{valueattr}}" selectedItem="{{selectedItem}}" on-core-select="{{selectAction}}">
       <content></content>
     </core-menu>
@@ -177,9 +179,7 @@ contains the selection state.
        * @type "top" | "bottom"
        * @default "bottom"
        */
-      valign: 'top',
-
-      margin: 12
+      valign: 'top'
 
     },
 
