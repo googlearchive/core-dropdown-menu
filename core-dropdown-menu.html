@@ -57,6 +57,15 @@ contains the selection state.
   @param {boolean} detail.isSelected true for selection and false for deselection
   @param {Object} detail.item the item element
 -->
+
+<!--
+Fired when an item element is tapped.
+
+@event core-activate
+@param {Object} detail
+  @param {Object} detail.item the item element
+-->
+
 <link href="../polymer/polymer.html" rel="import">
 <link href="../core-icon/core-icon.html" rel="import">
 <link href="../core-icons/core-icons.html" rel="import">
@@ -75,7 +84,7 @@ contains the selection state.
   </div>
 
   <core-dropdown id="dropdown" relatedTarget="{{$.control}}" opened="{{opened}}" halign="{{halign}}" valign="{{valign}}">
-    <core-menu selected="{{selected}}" valueattr="{{valueattr}}" selectedItem="{{selectedItem}}" on-core-select="{{selectAction}}">
+    <core-menu selected="{{selected}}" valueattr="{{valueattr}}" selectedItem="{{selectedItem}}" on-core-activate="{{activateAction}}">
       <content></content>
     </core-menu>
   </core-dropdown>
@@ -183,7 +192,7 @@ contains the selection state.
 
     },
 
-    selectAction: function() {
+    activateAction: function() {
       this.opened = false;
     },
 
