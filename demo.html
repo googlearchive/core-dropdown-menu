@@ -38,7 +38,7 @@ license that can be found in the LICENSE file.
       max-width: 100px;
     }
 
-    body /deep/ core-dropdown-menu::shadow #dropdown {
+    body /deep/ #dropdown {
       background-color: #eee;
       border: 1px solid #ccc;
     }
@@ -90,6 +90,17 @@ license that can be found in the LICENSE file.
             <core-item label="{{name}}"></core-item>
           </template>
         </core-dropdown-menu>
+
+        <core-dropdown-menu layered style="position:relative;z-index:1;" label="layered, z-index: 1">
+          <template repeat="{{countries}}">
+            <core-item label="{{name}}"></core-item>
+          </template>
+        </core-dropdown-menu>
+
+        <span style="position:relative;z-index:10;">
+          z-index:10
+        </span>
+
 
           <p>scroll me...</p>
 

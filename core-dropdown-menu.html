@@ -83,7 +83,7 @@ Fired when an item element is tapped.
     <core-icon id="arrow" icon="{{opened ? 'arrow-drop-up' : 'arrow-drop-down'}}"></core-icon>
   </div>
 
-  <core-dropdown id="dropdown" relatedTarget="{{$.control}}" opened="{{opened}}" halign="{{halign}}" valign="{{valign}}">
+  <core-dropdown id="dropdown" relatedTarget="{{$.control}}" opened="{{opened}}" halign="{{halign}}" valign="{{valign}}" layered="{{layered}}">
     <core-menu selected="{{selected}}" valueattr="{{valueattr}}" selectedItem="{{selectedItem}}" on-core-activate="{{activateAction}}">
       <content></content>
     </core-menu>
@@ -136,7 +136,7 @@ Fired when an item element is tapped.
 
       /**
        * Specifies the CSS class to be used to add to the selected element.
-       * 
+       *
        * @attribute selectedClass
        * @type string
        * @default 'core-selected'
@@ -188,7 +188,16 @@ Fired when an item element is tapped.
        * @type "top" | "bottom"
        * @default "bottom"
        */
-      valign: 'top'
+      valign: 'top',
+
+      /**
+       * If true, the overlay is guaranteed to display above page content.
+       *
+       * @attribute layered
+       * @type boolean
+       * @default false
+      */
+      layered: false
 
     },
 
